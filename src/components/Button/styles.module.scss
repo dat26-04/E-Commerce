@@ -1,0 +1,8 @@
+@use "../../assets/styles/mixins.module" as mixins;
+
+.btn {
+    @include mixins.btn(30px, 30px, #fff, 0px)
+}
+.btn2 {
+    @include mixins.btn(44px, 44px, #fff, 50%)
+}

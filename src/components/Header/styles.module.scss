@@ -1,0 +1,20 @@
+@use "@styles/mixins.module.scss" as *;
+@use "@styles/variables.module.scss" as * ;
+
+.container {
+    display: flex;
+    align-items: center;
+}
+.containerIcon {
+    @include flex_box_custom(center, center, 10px)
+}
+.containerMenu {
+    @include flex_box_custom(center, center, 20px)
+}
+.boxIcon {
+    @include radius_common(50%);
+    @include flex_box_custom(center, center, 0px);
+    background-color: $primary-color;
+    width: 26px;
+    height: 26px;
+}
