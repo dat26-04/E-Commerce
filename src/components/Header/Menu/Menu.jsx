@@ -2,7 +2,8 @@ import React from 'react'
 import styles from "../styles.module.scss"
 const Menu = ({content, href}) => {
   return (
-    <div>{content}</div>
+    <div className={styles.menu}>
+      {content}</div>
   )
 }
 

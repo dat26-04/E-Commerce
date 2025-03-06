@@ -2,7 +2,10 @@ const dataBoxIcon =
     [
         {type: 'fb', href:"#"},
         {type: 'ins', href:"#"},
-        {type: 'yt', href:"#"}
+        {type: 'yt', href:"#"},
+        {type: 'reload', href:"#"},
+        {type: 'heart', href:"#"},
+        {type: 'cart', href:"#"}   
     ]
 
 const dataMenu = [
