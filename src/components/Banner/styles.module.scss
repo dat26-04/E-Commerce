@@ -1,0 +1,21 @@
+@use "../../assets/styles/mixins.module" as *;
+
+
+.container {
+    background: url('../../assets/icon/background.jpeg');
+    min-height: 750px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    @include flex_box_custom(center, center, 0px);
+}
+
+.content {
+    @include flex_box_custom(center, center, 20px);
+    flex-direction: column;
+}
+
+.title {
+    font-size: 20px ;
+    font-weight: 500;
+    margin-bottom: 15px;
+}

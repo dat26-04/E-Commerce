@@ -11,7 +11,10 @@
     width: 1250px;
 }
 .container {
-    background-color: bisque;
+    right: 0;
+    left: 0;
+    top: 0;
+    position: absolute;
     @include flex_box_custom(center, center, 10px)
 }
 .containerBoxIcon {

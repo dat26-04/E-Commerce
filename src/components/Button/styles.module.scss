@@ -1,8 +1,14 @@
-@use "../../assets/styles/mixins.module" as mixins;
-
+@use "../../assets/styles/mixins.module" as *;
+@use "../../assets//styles//variables.module" as *;
 .btn {
-    @include mixins.btn(30px, 30px, #fff, 0px)
-}
-.btn2 {
-    @include mixins.btn(44px, 44px, #fff, 50%)
+    @include btn(176px, 42px, 3px, $primary-color);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        background-color: transparent;
+        color: $primary-color;
+        border: solid 1px $primary-color;
+        transition: background-color 300ms;
+    }
 }
