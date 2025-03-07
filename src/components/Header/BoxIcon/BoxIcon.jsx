@@ -5,7 +5,7 @@ import yticon from '@icon/yticon.svg';
 import reloadicon from '@icon/reloadicon.svg';
 import hearticon from '@icon/hearticon.svg';
 import carticon from '@icon/carticon.svg';
-const BoxIcon = ({ type, href }) => {
+const BoxIcon = ({ type }) => {
     const handleRenderIcon = (type) => {
         switch (type) {
             case 'fb':

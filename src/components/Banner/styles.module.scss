@@ -4,8 +4,9 @@
 .container {
     background: url('../../assets/icon/background.jpeg');
     min-height: 750px;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     @include flex_box_custom(center, center, 0px);
 }
 

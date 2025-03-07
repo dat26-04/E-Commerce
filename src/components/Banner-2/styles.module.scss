@@ -1,0 +1,20 @@
+@use "../../assets//styles//variables.module" as *;
+@use "../../assets/styles/mixins.module" as *;
+
+.container {
+    background-image: url("../../assets/icon/download.jpg");
+    height: 409px;
+    width: calc(100% / 2.5);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 150px;
+}
+
+.title {
+    font-size: 25px;
+    @include flex-box-custom(center, center, 0px);
+    margin-top: 200px;
+}
+.button {
+    margin-left: 180px;
+}

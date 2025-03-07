@@ -1,0 +1,34 @@
+@use "../../assets//styles//variables.module" as *;
+@use "../../assets/styles/mixins.module" as *;
+
+.container {
+    @include flex-box-custom(center, center, 0px);
+    margin: 65px 0 15px;
+}
+
+
+.headline {
+    height: 2px;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.containerMiddleBox {
+    padding: 0xp 10px;
+    width: 100%;
+    @include flex-box-custom(center, center, 0px);
+    flex-direction: column;
+    line-height: 8px;
+}
+.des {
+    font-size: 14px;
+    color: $third-color;
+    text-transform: uppercase;
+}
+.title {
+    font-size: 14px;
+    color: $primary-color;
+    font-weight: 400;
+    font-size: 25px;
+    margin-top: 10px;
+}

@@ -1,0 +1,10 @@
+@use "../../assets//styles//variables.module" as *;
+@use "../../assets/styles/mixins.module" as *;
+
+.container {
+    @include flex-box-custom(space-between, center, 10px);
+}
+
+.containerItem {
+    @include flex-box-custom(center, center, 10px);
+}
