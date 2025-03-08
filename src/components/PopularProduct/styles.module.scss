@@ -1,0 +1,10 @@
+@use "../../assets//styles//variables.module" as *;
+@use "../../assets/styles/mixins.module" as *;
+
+.container {
+    margin-top: 10px;
+    margin-left: 150px;
+
+    @include flex-box-custom(space-between, center, 0px);
+    flex-wrap: wrap;
+}

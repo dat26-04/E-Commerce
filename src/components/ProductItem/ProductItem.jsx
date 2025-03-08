@@ -5,12 +5,13 @@ import yticon from '@icon/yticon.svg';
 import hearticon from '@icon/hearticon.svg';
 import carticon from '@icon/carticon.svg';
 
-const ProductItem = ({src, prevsrc, title, price}) => {
+const ProductItem = ({src, prevsrc, name, price}) => {
+    console.log("Props nhận được:", { src, prevsrc, name, price });
     return (
         <div>
             <div className={style.boxImage}>
-                <img src='https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.1-min-285x340.jpg' />
-                <img src='https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.2-min-285x340.jpg' className={style.showWhenHover}/>
+                <img src={src} />
+                <img src={prevsrc} className={style.showWhenHover}/>
                 <div className={style.showNavbarWhenHover}>
                     <div className={style.boxIcon}>
                         <img src={fbicon}/>
@@ -26,8 +27,8 @@ const ProductItem = ({src, prevsrc, title, price}) => {
                     </div>
                 </div>
             </div>
-            <div className={style.title}>  Yellow Gold</div>
-            <div className={style.price}> $99.99</div>
+            <div className={style.name}> {name}</div>
+            <div className={style.price}> {price}</div>
         </div>
     );
 };
