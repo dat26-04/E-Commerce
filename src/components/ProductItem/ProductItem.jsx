@@ -6,7 +6,6 @@ import hearticon from '@icon/hearticon.svg';
 import carticon from '@icon/carticon.svg';
 
 const ProductItem = ({src, prevsrc, name, price}) => {
-    console.log("Props nhận được:", { src, prevsrc, name, price });
     return (
         <div>
             <div className={style.boxImage}>

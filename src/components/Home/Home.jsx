@@ -6,6 +6,8 @@ import ListProduct from '@components/ListProduct/ListProduct';
 import { getProduct } from '@/apis/productService';
 import { useEffect, useState } from 'react';
 import PopularProduct from '@components/PopularProduct/PopularProduct';
+import SaleHomepage from '@components/SaleHomepage/SaleHomepage';
+import Footer from '@components/Footer/Footer';
 
 const Home = () => {
 
@@ -24,6 +26,8 @@ const Home = () => {
                 <Body />
                 <ListProduct data={listProduct.slice(0, 2)}/>
                 <PopularProduct data={listProduct.slice(2, listProduct.length)}/>
+                <SaleHomepage />
+                <Footer />
             </div>
         </div>
     );

@@ -1,0 +1,30 @@
+@use "../../assets//styles//variables.module" as *;
+@use "../../assets/styles/mixins.module" as *;
+
+.container {
+    @include flex_box_custom(center, center, 0px);
+    margin-top: 100px;   
+    
+    .title {
+        font-size: 34p;
+        color: $primary-color;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .desc {
+        font-size: 16px;
+        color: $primary-color;
+        text-align: center;
+        font-weight: 300;
+        width: 600px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .button {
+        margin-top: 30px;
+        display: flex;
+        @include flex_box_custom(center, center, 0px)
+    }
+}
