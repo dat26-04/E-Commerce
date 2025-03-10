@@ -1,0 +1,29 @@
+@use "../../assets/styles/variables.module" as *;
+@use "../../assets/styles/mixins.module" as *;
+
+.container {
+
+    .labelInput {
+        font-size: 14px;
+        color: $primary-color
+    }
+
+    .boxInput {
+        width: 100%;
+        position: relative;
+        input {
+            width: 100%;
+            border: 1px solid #e1e1e1;
+            outline: none;
+            padding: 10px 0 10px 10px;
+        }
+
+        .password {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-top: 12px;
+            cursor: pointer;
+        }
+    }
+}

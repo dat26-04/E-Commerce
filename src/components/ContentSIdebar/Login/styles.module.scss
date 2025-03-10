@@ -1,0 +1,36 @@
+@use "../../../assets/styles/variables.module" as *;
+@use "../../../assets/styles/mixins.module" as *;
+
+
+.container {
+    padding: 30px 20px 0 20px;
+    
+    .title {
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .box {
+        margin-top: 10px;
+    }
+    .remember {
+
+        margin-bottom: 20px;
+        input {
+            margin-right: 10px;
+            padding: 10px;
+        }
+        span {
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
+    }
+    .LostPass {
+        padding: 5px;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
