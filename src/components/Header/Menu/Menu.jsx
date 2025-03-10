@@ -1,10 +1,15 @@
-import React from 'react'
-import styles from "../styles.module.scss"
-const Menu = ({content, href}) => {
-  return (
-    <div className={styles.menu}>
-      {content}</div>
-  )
-}
+import React, { useContext } from "react";
+import styles from "../styles.module.scss";
+import { SidebarContext } from "@/contexts/Sidebar";
 
-export default Menu
+const Menu = ({ content }) => {
+    const { setIsOpen } = useContext(SidebarContext);
+
+    return (
+        <div className={styles.menu} onClick={() => setIsOpen(true)}>
+            {content}
+        </div>
+    );
+};
+
+export default Menu;

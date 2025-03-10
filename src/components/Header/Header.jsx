@@ -3,7 +3,12 @@ import { dataBoxIcon, dataMenu } from './BoxIcon/constants';
 import Menu from './Menu/Menu';
 import styles from './styles.module.scss';
 import Logo from '../../../src/assets/react.svg';
+import { useContext } from 'react';
+import { SidebarContext } from '@/contexts/Sidebar';
 const Header = () => {
+    const { isOpen, setIsOpen } = useContext(SidebarContext);
+
+    console.log(isOpen, setIsOpen);
     return (
         <div className={styles.container}>
             <div className={styles.containerHeader}>
@@ -30,7 +35,7 @@ const Header = () => {
                     <div className={styles.containerMenu}>
                         {dataMenu.slice(3, dataMenu.length).map((item) => {
                             return (
-                                <Menu content={item.content} href={item.href} />
+                                <Menu content={item.content} href={item.href} setIsOpen={item.setIsOpen}/>
                             );
                         })}
                     </div>

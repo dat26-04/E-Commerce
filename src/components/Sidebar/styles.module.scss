@@ -1,0 +1,52 @@
+@use "../../assets//styles//variables.module" as *;
+@use "../../assets/styles/mixins.module" as *;
+
+.container {
+    position: relative;
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #0000004d;
+        z-index: 1000;
+
+        transition: all 0.3s ease;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 300px;
+        z-index: 10000;
+        height: 100vh;
+        background-color: #fff;
+
+        transform: translateX(300px);
+        transition: all 0.3s ease;
+
+    }
+
+    .slideSidebar {
+        transform: translateX(0);
+    }
+
+    .close {
+        position: absolute;
+        top: 30px;
+        left: -50px;
+        border-radius: 30px;
+        background-color: #fff;
+        padding: 10px;
+        cursor: pointer;
+        align-items: center;
+
+        &:hover {
+            background-color: #ccc;
+        }
+    }
+
+}
