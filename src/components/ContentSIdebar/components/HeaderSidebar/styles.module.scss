@@ -1,0 +1,9 @@
+@use "../../../../assets/styles/variables.module" as *;
+@use "../../../../assets/styles/mixins.module" as *;
+
+
+
+.container {
+    @include flex_box_custom(center, center, 0px);
+    flex-direction: column;
+}

@@ -6,9 +6,14 @@ import Logo from '../../../src/assets/react.svg';
 import { useContext } from 'react';
 import { SidebarContext } from '@/contexts/Sidebar';
 const Header = () => {
-    const { isOpen, setIsOpen } = useContext(SidebarContext);
+    const { isOpen, setIsOpen, setType } = useContext(SidebarContext);
 
-    console.log(isOpen, setIsOpen);
+
+
+    const handleOpenSidebar = (type) => {
+        setIsOpen(true);
+        setType(type);
+    }
     return (
         <div className={styles.container}>
             <div className={styles.containerHeader}>
@@ -47,6 +52,7 @@ const Header = () => {
                                     <BoxIcon
                                         type={item.type}
                                         href={item.href}
+                                        onClick={() => handleOpenSidebar(item.type)}
                                     />
                                 );
                             })}

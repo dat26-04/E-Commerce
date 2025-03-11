@@ -1,0 +1,31 @@
+@use "../../../../assets/styles/variables.module" as *;
+@use "../../../../assets/styles/mixins.module" as *;
+
+.container {
+    margin-top: 40px;
+    padding: 30px;
+    position: relative;
+
+    @include flex_box_custom(center, flex-start, 25px);
+    img {
+        width: 70px;
+    }
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 5px;
+        cursor: pointer;
+        transform: translateX(100px)
+    }
+    .box {
+        @include flex_box_custom(center, flex-start, 3px);
+        flex-direction: column;
+        height: 50px;
+    }
+
+    &:hover {
+        background-color: #e7e7e7;
+        .close {
+            transform: translateX(0); }
+    }
+}

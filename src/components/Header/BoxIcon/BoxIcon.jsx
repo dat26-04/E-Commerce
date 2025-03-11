@@ -5,7 +5,7 @@ import yticon from '@icon/yticon.svg';
 import reloadicon from '@icon/reloadicon.svg';
 import hearticon from '@icon/hearticon.svg';
 import carticon from '@icon/carticon.svg';
-const BoxIcon = ({ type }) => {
+const BoxIcon = ({ type, onClick }) => {
     const handleRenderIcon = (type) => {
         switch (type) {
             case 'fb':
@@ -24,7 +24,7 @@ const BoxIcon = ({ type }) => {
     };
     return (
         <div className={styles.boxIcon}>
-            <img src={handleRenderIcon(type)} alt={type} />
+            <img src={handleRenderIcon(type)} alt={type} onClick={() => onClick(type)}/>
         </div>
     );
 };

@@ -1,0 +1,11 @@
+@use "../../../assets/styles/variables.module" as *;
+@use "../../../assets/styles/mixins.module" as *;
+
+.container {
+    padding: 30px 20px 0 20px;
+    @include flex_box_custom(space-between, space-between, 0px);
+    flex-direction: column;
+    height: 80vh;
+}
+
+
