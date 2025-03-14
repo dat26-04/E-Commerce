@@ -39,7 +39,7 @@ const Sidebar = () => {
                 className={classNames(style.sidebar, {
                     [style.slideSidebar]: isOpen
                 })}
-                onClick={handleToggle}
+                // onClick={handleToggle}
             >
                 {isOpen && (
                     <div className={style.close}>

@@ -1,39 +1,36 @@
 import React, { useState } from 'react';
 import style from './styles.module.scss';
-import { FaRegEye } from 'react-icons/fa6';
-import { FaRegEyeSlash } from 'react-icons/fa6';
-const InputForm = ({ label, type, isRequired = false, ...props }) => {
-    const isPassword = type === 'password';
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
 
+const InputForm = ({ label, type, isRequired = false, formik, id, ...props }) => {
     const [showPass, setShowPass] = useState(false);
-    const isShowPass = type === 'password' && showPass ? 'text' : type;
-    const handleShowPass = () => {
-        setShowPass(!showPass);
-    };
+    const isPassword = type === 'password';
+    const inputType = isPassword && showPass ? 'text' : type;
 
-    const isError =
-        props.formik.touched[props.id] && props.formik.errors[props.id];
-    const messError = props.formik.errors[props.id];
+    const isError = formik?.touched?.[id] && formik?.errors?.[id];
+    const messError = formik?.errors?.[id];
+
     return (
         <div className={style.container}>
-            <div className={style.labelInput}>
+            <label htmlFor={id} className={style.labelInput}>
                 {label} {isRequired && <span>*</span>}
-            </div>
+            </label>
             <div className={style.boxInput}>
                 <input
-                    type={isShowPass}
+                    id={id}
+                    type={inputType}
+                    onBlur={formik?.handleBlur}
+                    onChange={formik?.handleChange}
+                    value={formik?.values?.[id] || ''}
                     {...props}
-                    onBlur={props.formik.handleBlur}
-                    onChange={props.formik.handleChange}
-                    value={props.formik.values[props.id]}
                 />
                 {isPassword && (
-                    <div className={style.password} onClick={handleShowPass}>
+                    <div className={style.password} onClick={() => setShowPass(!showPass)}>
                         {showPass ? <FaRegEye /> : <FaRegEyeSlash />}
                     </div>
                 )}
-                {isError && <div className={style.error}>{messError}</div>}
             </div>
+            {isError && <div className={style.error}>{messError}</div>}
         </div>
     );
 };
