@@ -26,7 +26,7 @@ const SaleHomepage = () => {
       window.addEventListener('scroll', scrollTracking);
       return () => window.removeEventListener('scroll', scrollTracking)
     }, [])
-      console.log(scrollPositon)
+      // console.log(scrollPositon)
     const handleTransX = () => {
       if(scroll === 'down' && scrollPositon >= 3658) {
         setTransXposition(transXposition <= 0 ? 0 : transXposition - 1)

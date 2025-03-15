@@ -5,17 +5,23 @@ import Button from '@components/Button/Button';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { ToastContext } from '@/contexts/Toast';
-
+import { register } from '@/apis/authService';
+import { signIn } from '@/apis/authService';
+import Cookies from 'js-cookie';
+import { SidebarContext } from '@/contexts/Sidebar';
+import { StoreContext } from '@/contexts/StoreProvider';
 const Login = () => {
     const [isRegister, setIsRegister] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const { toast } = useContext(ToastContext);
+    const {setIsOpen} = useContext(SidebarContext); 
+    const {setUserId} = useContext(StoreContext);
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
             confirmpassword: ''
         },
-        enableReinitialize: true,
         validationSchema: Yup.object({
             email: Yup.string()
                 .email('Invalid Email')
@@ -23,24 +29,66 @@ const Login = () => {
             password: Yup.string()
                 .min(6, 'Password must be at least 6 characters')
                 .required('Password is required'),
-            confirmpassword: Yup.string().when('password', {
-                is: () => isRegister,
-                then: (schema) =>
-                    schema
-                        .required('Confirm Password is required')
-                        .oneOf([Yup.ref('password')], 'Password not match')
-            })
+            confirmpassword: isRegister
+                ? Yup.string()
+                      .required('Confirm Password is required')
+                      .oneOf([Yup.ref('password')], 'Password not match')
+                : Yup.string()
         }),
-        onSubmit: (values) => {
-            console.log(values);
+        onSubmit: async (values) => {
+            console.log(JSON.parse(JSON.stringify(values)));
+
+            const { email: username, password } = values;
+
+            if(isLoading) return;
+            setIsLoading(true);
+            if (isRegister) {
+                
+                await register(username, password)
+                    .then((res) => {
+                        console.log(res);
+                        toast.success(res.data.message);
+                        setIsLoading(false);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        toast.error(error.response.data.message);
+                        setIsLoading(false);
+                    });
+            }
+
+            if(!isRegister) {
+                await signIn(username, password)
+                .then((res) => {
+                    // console.log(res);
+                    const {id, token, refreshToken} = res.data;
+                    toast.success("Sign In Successfully");
+                    setUserId(id);
+                    Cookies.set('token', token);
+                    Cookies.set('refreshToken', refreshToken);
+                    Cookies.set('userId', id);
+                    setIsLoading(false);
+                    setIsOpen(false);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    toast.error("Sign In Failed");
+                    setIsLoading(false);
+                }); 
+            }
         }
     });
 
     const handleToggle = () => {
-        setIsRegister(!isRegister);
+        setIsRegister(prev => !prev);
+        // console.log("isRegister trước:", isRegister); // Giá trị cũ
         formik.resetForm();
     };
+    
 
+    // useEffect(() => {
+
+    // }, [])
     return (
         <div className={style.container}>
             <div>{isRegister ? 'Sign up' : 'Sign in'}</div>
@@ -77,9 +125,9 @@ const Login = () => {
                     </div>
                 )}
                 <Button
-                    content={isRegister ? 'Register' : 'Login'}
+                    content={isLoading ? "LOADING....":isRegister ? 'Register' : 'Login'}
                     type='submit'
-                    onClick={() => toast.success("Success Login")}
+                    // onClick={() => toast.success('Success Login')}
                 />
                 <Button
                     content={

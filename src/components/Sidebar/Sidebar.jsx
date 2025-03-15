@@ -14,6 +14,7 @@ const Sidebar = () => {
         setIsOpen(!isOpen);
     };
     const handleSwitchContent = () => {
+        console.log(type);
         switch (type) {
             case 'login':
                 return <Login />;
@@ -42,9 +43,13 @@ const Sidebar = () => {
                 // onClick={handleToggle}
             >
                 {isOpen && (
-                    <div className={style.close}>
+       
+                // onClick={handleToggle}
+                    <div className={style.close} onClick={handleToggle} >
                         <IoClose />
                     </div>
+                // onClick={handleToggle}
+                    
                 )}
                 {handleSwitchContent()}
             </div>

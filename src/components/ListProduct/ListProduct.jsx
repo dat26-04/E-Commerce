@@ -4,7 +4,7 @@ import Banner2 from '@components/Banner-2/Banner2';
 import ProductItem from '@components/ProductItem/ProductItem';
 
 const ListProduct = ({ data }) => {
-    console.log(data)
+    // console.log(data)
     return (
         <MainLayout>
             <div className={style.container}>
