@@ -1,0 +1,69 @@
+@use '../../assets//styles//variables.module' as *;
+@use '../../assets/styles/mixins.module' as *;
+
+.container {
+    padding-top: 83px;
+
+    @include flex_box_custom(space-between, center, 0px);
+    font-size: 14px;
+    font-weight: 300;
+
+    .shop {
+        color: black;
+        font-weight: 400;
+    }
+
+    .return {
+        cursor: pointer;
+    }
+}
+
+.containerBanner {
+    background-image: url('https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Background.jpeg');
+    height: 279px;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+    width: 100%;
+
+    .desc {
+        @include flex_box_custom(center, center, 0px);
+        flex-direction: column;
+        padding-top: 40px;
+
+        .title {
+            font-size: 30px;
+            font-weight: 400;
+        }
+    }
+}
+
+.containerFilter {
+    @include flex_box_custom(space-between, center, 0px);
+    .left {
+        @include flex_box_custom(center, center, 20px);
+    }
+    .boxIcon {
+        @include flex_box_custom(center, center, 0px);
+    }
+
+    .select {
+        border: 1px solid #e1e1e1;
+        padding: 5px;
+        color: #888;
+    }
+
+    .sort {
+        width: 275px;
+    }
+
+    .show {
+        width: 83px;
+    }
+}
+
+
+.containerSelectBox {
+    border: 1px solid #ccc;
+    padding: 5px;
+    color: #8d8484;
+}

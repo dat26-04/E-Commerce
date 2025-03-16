@@ -5,10 +5,10 @@ const routers = [
         path: "/",
         component: lazy(() => import("@components/Home/Home"))
     },
-    // {
-    //     path: "/blog",
-    //     component: lazy(() => import(""))
-    // }
+    {
+        path: "/shop",
+        component: lazy(() => import("@pages/OurShop/OurShop"))
+    }
 ]
 
 export default routers;
