@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Banner from '@pages/OurShop/components/Banner';
 import { OurShopProvider } from '@/contexts/OurshopProvider';
 import Filter from '@pages/OurShop/components/Filter';
+import ListProducts from '@pages/OurShop/components/ListProducts';
 
 const OurShop = () => {
     const navigate = useNavigate();
@@ -24,6 +25,7 @@ const OurShop = () => {
                 <Banner/>
                 <div>
                     <Filter />
+                    <ListProducts />
                 </div>
             </MainLayout>
         </OurShopProvider>

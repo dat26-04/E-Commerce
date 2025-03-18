@@ -12,8 +12,15 @@ import Footer from '@components/Footer/Footer';
 const Home = () => {
 
     const [listProduct, setListProduct] = useState([]);
+
     useEffect(() => {
-        getProduct().then((res) => {    
+
+        const query = {
+            sortType: 0,
+            page: 1,
+            limit: 10
+        }
+        getProduct(query).then((res) => {    
             setListProduct(res.contents);
 
         });

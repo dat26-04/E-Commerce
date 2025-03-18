@@ -1,5 +1,5 @@
-@use "../../assets//styles//variables.module" as *;
-@use "../../assets/styles/mixins.module" as *;
+@use '../../assets//styles//variables.module' as *;
+@use '../../assets/styles/mixins.module' as *;
 
 .boxImage {
     width: 100%;
@@ -22,7 +22,7 @@
         right: 0;
         bottom: 0;
     }
-    &:hover .showNavbarWhenHover{
+    &:hover .showNavbarWhenHover {
         opacity: 1;
         right: 20px;
         transition: opacity 500ms, right 500ms;
@@ -39,7 +39,7 @@
         width: 40px;
         height: 40px;
         @include flex-box-custom(center, center, 0px);
-        img  {
+        img {
             width: 20px;
             height: 20px;
         }
@@ -58,4 +58,33 @@
 .price {
     font-size: 13px;
     color: $primary-color;
+}
+
+.boxSize {
+    @include flex-box-custom(center, center, 10px);
+
+    .size {
+        @include flex-box-custom(center, center, 10px);
+
+        border: 1px solid #e1e1e1;
+        padding: 5px 6px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-top: 5px;
+
+        &:hover {
+            border: 1px solid #222;
+            transition: border 300ms;
+        }
+    }
+}
+
+
+.textCenter {
+    text-align: center;
+    padding: 5px;
+}
+
+.boxButton {
+    margin-left: 73px;
 }
