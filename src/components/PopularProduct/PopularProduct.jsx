@@ -13,6 +13,8 @@ const PopularProduct = ({data}) => {
             prevsrc={item.images?.[1]}
             name={item.name}
             price={item.price}
+            details={item}
+
         />
           ))}
         </div>

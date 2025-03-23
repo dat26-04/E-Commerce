@@ -19,10 +19,11 @@ export const OurShopProvider = ({ children }) => {
         { label: 'All', value: 'all' }
     ];
 
-    const [sortId, setSortId] = useState("1");
-    const [showId, setShowId] = useState("8");
+    const [sortId, setSortId] = useState('1');
+    const [showId, setShowId] = useState('8');
     const [isShowGrid, setIsShowGrid] = useState(true);
     const [products, setProduct] = useState([]);
+    const [loading, setIsLoading] = useState(false);
     const values = {
         sortOptions,
         showOptions,
@@ -30,7 +31,8 @@ export const OurShopProvider = ({ children }) => {
         setShowId,
         setIsShowGrid,
         products,
-        isShowGrid
+        isShowGrid,
+        loading
     };
 
     useEffect(() => {
@@ -39,11 +41,16 @@ export const OurShopProvider = ({ children }) => {
             page: 1,
             limit: showId
         };
-
+        setIsLoading(true);
         getProduct(query)
-            .then((res) => setProduct(res.contents))
-            .catch((err) => console.log(err));
-        
+            .then((res) => {
+                setProduct(res.contents);
+                setIsLoading(false);
+            })
+            .catch((err) => {
+                console.log(err);
+                setIsLoading(false);
+            });
     }, [showId, sortId]);
     return (
         <OurShopContext.Provider value={values}>

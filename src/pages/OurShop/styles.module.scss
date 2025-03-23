@@ -70,7 +70,8 @@
 
 
 .containerProduct {
-    @include flex_box_custom(center, center, 20px);
+    @include flex_box_custom(center, flex-start, 20px);
     flex-wrap: wrap;
     margin-top: 40px;
+
 }

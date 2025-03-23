@@ -2,7 +2,7 @@
 @use '../../assets/styles/mixins.module' as *;
 
 .boxImage {
-    width: 100%;
+    width: 300px;
     height: 380px;
     position: relative;
     img {
@@ -78,8 +78,15 @@
         }
     }
 }
-
-
+.isActiveSize {
+    border: 1px solid #222 !important;
+}
+.clear {
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+}
 .textCenter {
     text-align: center;
     padding: 5px;
@@ -87,4 +94,23 @@
 
 .boxButton {
     margin-left: 73px;
+}
+
+.container {
+    @include flex_box_custom(flex-start, center, 10px);
+    margin-top: 10px;
+    img {
+        width: 300px;
+        height: 100%;
+        
+    }
+}
+
+.content {
+    @include flex_box_custom(flex-start, flex-start, 5px);
+    flex-direction: column;
+}
+
+.buttonleft {
+    margin: 0px;
 }
