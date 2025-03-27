@@ -99,6 +99,7 @@
 .container {
     @include flex_box_custom(flex-start, center, 10px);
     margin-top: 10px;
+    
     img {
         width: 300px;
         height: 100%;

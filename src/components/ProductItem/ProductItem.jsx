@@ -7,26 +7,61 @@ import cls from 'classnames';
 import Button from '@components/Button/Button';
 import { useContext, useEffect, useState } from 'react';
 import { OurShopContext } from '@/contexts/OurshopProvider';
+import Cookies from 'js-cookie';
+import { SidebarContext } from '@/contexts/Sidebar';
+import { ToastContext } from '@/contexts/Toast';
+import { addProductToCart } from '@/apis/cartService';
 const ProductItem = ({ src, prevsrc, name, price, details, isHome = true }) => {
     // console.log(details);
     const ourShopStore = useContext(OurShopContext) || {};
-    const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid) 
+    const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid);
     const [sizeChoose, setSizeChoose] = useState('');
-
+    const userId = Cookies.get('userId');
+    const { setIsOpen, setType, handleGetListProduct } = useContext(SidebarContext);
+    const { toast } = useContext(ToastContext);
     const handleSize = (size) => {
         setSizeChoose(size);
     };
-    const handleClear= () => {
+    const handleClear = () => {
         setSizeChoose('');
-    }
+    };
+    const handleAddToCart = () => {
+        console.log(userId);
+        if (!userId) {
+            setIsOpen(true);
+            setType('login');
+
+            toast.warning('Please login to add product to cart');
+        }
+
+        if (!sizeChoose) {
+            toast.warning('Please choose size');
+            return;
+        }
+
+        const data = {
+            userId,
+            productId: details._id,
+            quantity: 1,
+            size: sizeChoose
+        };
+        // console.log(data);
+        addProductToCart(data)
+            .then(() => {
+                toast.success('Add Product to Cart successfully');
+                setIsOpen(true);
+                setType('cart');
+                handleGetListProduct(userId, "cart");
+            })
+            .catch((err) => console.log(err));
+    };
     useEffect(() => {
-        if(isHome) {
+        if (isHome) {
             setIsShowGrid(true);
+        } else {
+            setIsShowGrid(ourShopStore.isShowGrid);
         }
-        else {
-            setIsShowGrid(ourShopStore.isShowGrid)
-        }
-    }, [isHome, ourShopStore.isShowGrid])
+    }, [isHome, ourShopStore.isShowGrid]);
     return (
         <div className={isShowGrid ? '' : style.container}>
             <div className={style.boxImage}>
@@ -55,7 +90,8 @@ const ProductItem = ({ src, prevsrc, name, price, details, isHome = true }) => {
                                 <div
                                     key={item.name}
                                     className={cls(style.size, {
-                                        [style.isActiveSize]: sizeChoose === item.name
+                                        [style.isActiveSize]:
+                                            sizeChoose === item.name
                                     })}
                                     onClick={() => handleSize(item.name)}
                                 >
@@ -65,7 +101,11 @@ const ProductItem = ({ src, prevsrc, name, price, details, isHome = true }) => {
                         })}
                     </div>
                 )}
-                {sizeChoose && <div className={style.clear} onClick={() => handleClear()}>Clear</div>}
+                {sizeChoose && (
+                    <div className={style.clear} onClick={() => handleClear()}>
+                        Clear
+                    </div>
+                )}
                 <div
                     className={cls(style.name, {
                         [style.textCenter]: !isHome
@@ -86,7 +126,10 @@ const ProductItem = ({ src, prevsrc, name, price, details, isHome = true }) => {
                             [style.buttonleft]: !isShowGrid
                         })}
                     >
-                        <Button content={'ADD TO CART'} />
+                        <Button
+                            content={'ADD TO CART'}
+                            onClick={handleAddToCart}
+                        />
                     </div>
                 )}
             </div>

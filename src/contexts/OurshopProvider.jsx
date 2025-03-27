@@ -19,11 +19,36 @@ export const OurShopProvider = ({ children }) => {
         { label: 'All', value: 'all' }
     ];
 
-    const [sortId, setSortId] = useState('1');
+    const [sortId, setSortId] = useState('0');
     const [showId, setShowId] = useState('8');
     const [isShowGrid, setIsShowGrid] = useState(true);
     const [products, setProduct] = useState([]);
     const [loading, setIsLoading] = useState(false);
+    const [page, setPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(0);
+    const handleLoadMore = () => {
+        if (loading) return; // Tránh gọi API nhiều lần khi đang tải
+
+        setIsLoading(true);
+        const query = {
+            sortType: sortId,
+            page: +page + 1,
+            limit: showId
+        };
+        getProduct(query)
+            .then((res) => {
+                setProduct((prev) => {
+                    return [...prev, ...res.contents];
+                });
+                setPage(+res.page);
+                setTotalPage(res.total);
+                setIsLoading(false);
+            })
+            .catch((err) => {
+                console.log(err);
+                setIsLoading(false);
+            });
+    };
     const values = {
         sortOptions,
         showOptions,
@@ -32,7 +57,9 @@ export const OurShopProvider = ({ children }) => {
         setIsShowGrid,
         products,
         isShowGrid,
-        loading
+        loading,
+        handleLoadMore,
+        totalPage
     };
 
     useEffect(() => {
@@ -45,6 +72,7 @@ export const OurShopProvider = ({ children }) => {
         getProduct(query)
             .then((res) => {
                 setProduct(res.contents);
+                setTotalPage(res.total);
                 setIsLoading(false);
             })
             .catch((err) => {

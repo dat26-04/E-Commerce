@@ -7,37 +7,48 @@ import Button from '@components/Button/Button';
 // import Footer from '@components/Footer/Footer';
 
 const ListProducts = () => {
-    const { products, isShowGrid, loading } = useContext(OurShopContext);
-    return (
-        <>
-        <MainLayout>
-            {loading ? (
-                <div>Loading...</div>
-            ) : (
-                <>
-                    <div className={isShowGrid ? style.containerProduct : ''}>
-                        {products.map((item) => (
-                            <ProductItem
-                                key={item.id}
-                                src={item.images[0]}
-                                prevSrc={item.images[1]}
-                                name={item.name}
-                                price={item.price}
-                                details={item}
-                                isHome={false}
-                            />
-                        ))}
-                    </div>
-                    <div style={{
-                        marginTop: "20px",
-                        marginLeft: "530px"
-                    }}>
-                        <Button content={'LOAD MORE PRODUCT'} />
-                    </div>
-                </>
-            )}
-        </MainLayout>
-</>
+    const { products, isShowGrid, loading, handleLoadMore, totalPage } =
+        useContext(OurShopContext);
+    return ( 
+        <div className={style.containerListProduct}>
+            <MainLayout>
+                {loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <>
+                        <div
+                            className={isShowGrid ? style.containerProduct : ''}
+                        >
+                            {products.map((item) => (
+                                <ProductItem
+                                    key={item.id}
+                                    src={item.images[0]}
+                                    prevSrc={item.images[1]}
+                                    name={item.name}
+                                    price={item.price}
+                                    details={item}
+                                    isHome={false}
+                                />
+                            ))}
+                        </div>
+                        {products.length < totalPage && (
+                            <div
+                                style={{
+                                    marginTop: '20px',
+                                    display: 'flex',
+                                    justifyContent: 'center'
+                                }}
+                            >
+                                <Button
+                                    content={'LOAD MORE PRODUCT'}
+                                    onClick={handleLoadMore}
+                                />
+                            </div>
+                        )}
+                    </>
+                )}
+            </MainLayout>
+        </div>
     );
 };
 

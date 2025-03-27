@@ -1,19 +1,19 @@
 import React from 'react';
 import style from './styles.module.scss';
 import { MdClose } from 'react-icons/md';
-const ItemProduct = () => {
+const ItemProduct = ({ src, nameProduct, skuProduct, priceProduct, sizeProduct, quantity }) => {
     return (
         <div className={style.container}>
-            <img src='' />
+            <img src={src} />
             <div className={style.close}>
                 <MdClose />
             </div>
             <div className={style.box}>
-                <div>Title PRoduct</div>
-                <div>SIze: M</div>
-                <div>1 x $199.99</div>
-                <div>SKU: 12349</div>
-                <div>$120.0</div>
+                <div>{nameProduct}</div>
+                <div>Size: {sizeProduct}</div>
+                <div>{quantity} x {priceProduct}</div>
+                <div>SKU: {skuProduct}</div>
+                {/* <div>{priceProduct}</div> */}
             </div>
         </div>
     );
