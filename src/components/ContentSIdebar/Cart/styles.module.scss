@@ -1,9 +1,5 @@
-@use "../../../assets/styles/variables.module" as *;
-@use "../../../assets/styles/mixins.module" as *;
-
-
-
-
+@use '../../../assets/styles/variables.module' as *;
+@use '../../../assets/styles/mixins.module' as *;
 
 .container {
     @include flex_box_custom(space-between, space-between, 0px);
@@ -11,7 +7,25 @@
     height: 80vh;
 
     .total {
-    @include flex_box_custom(space-between, space-between, 0px);
+        @include flex_box_custom(space-between, space-between, 0px);
+        margin-left: 10px;
+    }
+    .button {
+        margin-left: 10px;
+    }
+    .empty {
+        @include flex_box_custom(center, center, 10px);
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    .flex {
+        @include flex_box_custom(space-between, center, 10px);
+        flex-direction: column;
+        flex: 1;
 
     }
+}
+
+.isEmpty {
+    justify-content: unset;
 }
