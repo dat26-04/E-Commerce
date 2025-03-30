@@ -4,6 +4,7 @@ import Content from '@pages/Cart/component/Content/Content';
 import Steps from '@pages/Cart/component/Steps/Steps';
 import Footer from '@components/Footer/Footer';
 import style from './styles.module.scss';
+import MainLayout from '@components/Layout/MainLayout';
 
 const Cart = () => {
     return (
@@ -11,7 +12,9 @@ const Cart = () => {
             <Header />
             <div className={style.container}>
                 <Steps />
-                <Content />
+                <MainLayout>
+                    <Content />
+                </MainLayout>
             </div>
             <Footer />
         </>

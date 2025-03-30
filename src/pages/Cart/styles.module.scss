@@ -4,22 +4,45 @@
     padding-top: 83px;
 }
 .containerForSteps {
+    padding: 20px 0px;
     @include flex_box_custom(center, center, 0px);
     background-color: #fafafa;
-
+    .step {
+        @include flex_box_custom(center, center, 10px);
+        .line {
+            min-width: 120px;
+            height: 2px;
+            background-color: #e1e1e1;
+        }
+    }
     .stepss {
         @include flex_box_custom(center, center, 10px);
+        cursor: pointer;
         .numstep {
             @include flex_box_custom(center, center, 0px);
             background-color: #333;
             width: 28px;
             height: 28px;
             border-radius: 50%;
-            color: $white-color
-        }
+            color: $white-color;
 
+        }
+        .isDisabledNumber {
+            background-color: transparent;
+            border: 1px solid #e1e1e1;
+            color: #888;
+        }
         .textStep {
-            color: $secondary-color
+            color: $secondary-color;
+        }
+        
+        .isDisabled {
+            color: #888;
         }
     }
+}
+
+.containerForContent {
+    @include flex_box_custom(space-between, center, 0px);
+
 }

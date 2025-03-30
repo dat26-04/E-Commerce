@@ -1,21 +1,20 @@
 import React from 'react'
 import style from '../../styles.module.scss';
-
-const Stepss = () => {
+import cls from "classnames";
+const Stepss = ({
+  number, content, isDisabled
+}) => {
   return (
     <div>
         <div className={style.stepss}>
-            <div className={style.numstep}>1</div>
-            <div className={style.textStep}>SHOPPING CART</div>
+            <div className={cls(style.numstep , {
+              [style.isDisabledNumber]: isDisabled
+            })}>{number}</div>
+            <div className={cls(style.textStep, {
+              [style.isDisabled]: isDisabled
+            })}>{content}</div>
         </div>
-        <div>
-            <div>2</div>
-            <div>CHECKOUT</div>
-        </div>
-        <div>
-            <div>3</div>
-            <div>ORDER STATUS</div>
-        </div>
+  
     </div>
   )
 }

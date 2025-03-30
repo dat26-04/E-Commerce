@@ -4,6 +4,7 @@
     @include btn(176px, 42px, 3px, $primary-color);
     color: white;
     border-radius: 10px;
+    width: 200px;
     cursor: pointer;
     &:hover {
         background-color: transparent;

@@ -21,14 +21,14 @@ const Header = () => {
                     <div className={styles.containerBoxIcon}>
                         {dataBoxIcon.slice(0, 3).map((item) => {
                             return (
-                                <BoxIcon type={item.type} href={item.href} />
+                                <BoxIcon type={item.type} href={item.href} key={item.type}/>
                             );
                         })}
                     </div>
                     <div className={styles.containerMenu}>
                         {dataMenu.slice(0, 3).map((item) => {
                             return (
-                                <Menu content={item.content} href={item.href} />
+                                <Menu content={item.content} href={item.href} key={item.href}/>
                             );
                         })}
                     </div>
@@ -40,7 +40,7 @@ const Header = () => {
                     <div className={styles.containerMenu}>
                         {dataMenu.slice(3, dataMenu.length).map((item) => {
                             return (
-                                <Menu content={item.content} href={item.href} setIsOpen={item.setIsOpen}/>
+                                <Menu content={item.content} href={item.href} setIsOpen={item.setIsOpen} key={item.href}/>
                             );
                         })}
                     </div>
@@ -50,6 +50,7 @@ const Header = () => {
                             .map((item) => {
                                 return (
                                     <BoxIcon
+                                        key={item.type}
                                         type={item.type}
                                         href={item.href}
                                         onClick={() => handleOpenSidebar(item.type)}

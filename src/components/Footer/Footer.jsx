@@ -9,7 +9,7 @@ const Footer = () => {
             </div>
             <div className={style.boxNav}>
               {dataMenu.map((item) => {
-                return <div>{item.content}</div>
+                return <div key={item.content}>{item.content}</div>
               })}
             </div>
             <div>Guaranteed safe checkout
