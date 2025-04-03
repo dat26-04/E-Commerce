@@ -27,7 +27,7 @@ export const OurShopProvider = ({ children }) => {
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
     const handleLoadMore = () => {
-        if (loading) return; // Tránh gọi API nhiều lần khi đang tải
+        if (loading) return; 
 
         setIsLoading(true);
         const query = {

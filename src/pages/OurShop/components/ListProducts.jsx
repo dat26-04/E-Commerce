@@ -19,9 +19,9 @@ const ListProducts = () => {
                         <div
                             className={isShowGrid ? style.containerProduct : ''}
                         >
-                            {products.map((item) => (
+                            {products.map((item, index) => (
                                 <ProductItem
-                                    key={item.id}
+                                    key={item.id || index }
                                     src={item.images[0]}
                                     prevSrc={item.images[1]}
                                     name={item.name}

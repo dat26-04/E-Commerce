@@ -9,7 +9,7 @@ const getProductFromDatabase = async (userId) => {
 
 const deleteProduct = async (productId, userId) => {
     return await axiosClient.delete(`/cart/deleteItem`, {
-        data: { productId, userId }
+        data: { userId, productId }
     });
 };
 

@@ -3,13 +3,9 @@ import { FaTrash } from 'react-icons/fa';
 import './Content.scss';
 import SelectBox from '@pages/OurShop/components/SelectBox';
 
-const CartTable = ({listData}) => {
+const CartTable = ({listData, handleReplaceQuantity, handleDeleteProduct}) => {
     console.log(listData)
     const [cartItems, setCartItems] = useState(listData);
-
-    const removeItem = (id) => {
-        setCartItems((cartItems) => cartItems.filter((item) => item.id !== id));
-    };
     const showOptions = [
         { label: '1', value: '1' },
         { label: '2', value: '2' },
@@ -19,8 +15,16 @@ const CartTable = ({listData}) => {
         { label: '6', value: '6' },
         { label: '7', value: '7' }
     ];
-    const getValueSelect = (value, type) => {
-        console.log(value, type);
+    const getValueSelect = (userId, productId, quantity, size) => {
+        // console.log(value, type);
+        const data = {
+            userId,
+            productId,
+            quantity,
+            size,
+            isMultiple: true
+        }
+        handleReplaceQuantity(data);
     };
     useEffect(() => {
         setCartItems(listData);
@@ -48,7 +52,10 @@ const CartTable = ({listData}) => {
                                 </div>
                                 <FaTrash
                                     className='delete-icon'
-                                    onClick={() => removeItem(item.userId)}
+                                    onClick={() => handleDeleteProduct({
+                                        userId: item.userId,
+                                        productId: item.productId
+                                    })}
                                 />
                             </td>
                             <td>${item.price.toFixed(2)}</td>
@@ -56,7 +63,7 @@ const CartTable = ({listData}) => {
                             <td>
                                 <SelectBox
                                     options={showOptions}
-                                    getValue={getValueSelect}
+                                    getValue={e => getValueSelect(item.userId, item.productId, e, item.size)}
                                     type='sort'
                                     defaultValue={item.quantity}
                                 />

@@ -6,7 +6,7 @@ import Logo from '../../../src/assets/react.svg';
 import { useContext } from 'react';
 import { SidebarContext } from '@/contexts/Sidebar';
 const Header = () => {
-    const { isOpen, setIsOpen, setType } = useContext(SidebarContext);
+    const { setIsOpen, setType } = useContext(SidebarContext);
 
 
 
